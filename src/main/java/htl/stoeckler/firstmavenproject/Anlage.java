@@ -14,17 +14,19 @@ public class Anlage {
         this.nutzungsdauer = nutzungsdauer;
     }
 
-    public double jahresAfa(){
-        return anschaffungswert/nutzungsdauer;
+    public double jahresAfa() {
+        return anschaffungswert / nutzungsdauer;
     }
-    
-    public void updateBuchwert(int jahreGenutzt){
-        buchwert-= jahresAfa()*jahreGenutzt;
+
+    public void updateBuchwert(int jahreGenutzt) {
+        buchwert = anschaffungswert - jahreGenutzt * jahresAfa();
+        if (buchwert < 1.0) {
+            buchwert = 1.0;
+        }
     }
 
     public double getBuchwert() {
         return buchwert;
     }
-    
-    
+
 }
